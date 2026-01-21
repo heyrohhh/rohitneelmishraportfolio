@@ -209,6 +209,38 @@ Any other order WILL FAIL
 
 Docker builds binaries, not environments
 
+
+
+##Architechure
+
+graph TD
+    subgraph "Local Development"
+        A[React Code] --> B[Git Push]
+    end
+
+    subgraph "GitHub Actions (CI/CD Pipeline)"
+        B --> C{Trigger Workflow}
+        C --> D[Build React Production Build]
+        D --> E[Dockerize: Multi-stage Build]
+        E --> F[Push Image to Docker Hub]
+    end
+
+    subgraph "AWS Infrastructure (Terraform)"
+        G[VPC/Subnet] --> H[Security Groups]
+        H --> I[EC2 Instance - Amazon Linux]
+    end
+
+    subgraph "Configuration & Deployment (Ansible)"
+        F --> J[Ansible: Install Docker]
+        J --> K[Ansible: Pull & Run Container]
+        I --> J
+    end
+
+    K --> L((Live Portfolio Website))
+
+    style L fill:#f9f,stroke:#333,stroke-width:4px
+    style G fill:#FF9900,color:white
+
 Ansible manages state, not guesses
 
 Certbot needs a live web server
