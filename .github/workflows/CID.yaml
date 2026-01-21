@@ -33,7 +33,7 @@ jobs:
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v4
         with:
-          context: ./frontend/
+          context: ./frontendRohit/
           push: true
           tags: heyrohhh/portfolio:latest
 
