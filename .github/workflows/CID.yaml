@@ -46,7 +46,7 @@ jobs:
         with:
           host: ${{secrets.HOST}}
           username: ${{secrets.USERNAME}}
-          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          key: ${{ secrets.PRIVATE_KEY }}
           script: |
             # Nayi image pull karo aur purana container replace karo
             sudo docker pull heyrohhh/portfolio:latest
