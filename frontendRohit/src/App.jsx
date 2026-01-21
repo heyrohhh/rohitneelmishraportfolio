@@ -16,7 +16,7 @@ function App() {
         <div className="space-y-20"> 
           <Projects />
           <Experience />
-          <GithubStats />
+          {/* <GithubStats /> */}
         </div>
         <Contact />
       </main>
