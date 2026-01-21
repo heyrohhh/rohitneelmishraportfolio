@@ -208,43 +208,40 @@ Any other order WILL FAIL
 10️⃣ Mental Model to Remember
 
 Docker builds binaries, not environments
+Ansible manages state, not guesses
+Certbot needs a live web server
+Ports are global, containers are not
+Restarting Docker means something went wrong earlier
 
 
+#Architechture
 
-##Architechure
 
 graph TD
     subgraph "Local Development"
         A[React Code] --> B[Git Push]
     end
 
-    subgraph "GitHub Actions (CI/CD Pipeline)"
+    subgraph "GitHub Actions (CI/CD)"
         B --> C{Trigger Workflow}
-        C --> D[Build React Production Build]
-        D --> E[Dockerize: Multi-stage Build]
-        E --> F[Push Image to Docker Hub]
+        C --> D[Docker Multi-stage Build<br/>(React build inside Docker)]
+        D --> E[Push Image to Docker Hub]
     end
 
-    subgraph "AWS Infrastructure (Terraform)"
-        G[VPC/Subnet] --> H[Security Groups]
-        H --> I[EC2 Instance - Amazon Linux]
+    subgraph "AWS Infrastructure (Terraform - One Time)"
+        T[VPC / Subnet / SG] --> I[EC2 Instance]
     end
 
     subgraph "Configuration & Deployment (Ansible)"
-        F --> J[Ansible: Install Docker]
-        J --> K[Ansible: Pull & Run Container]
+        E --> J[Install Docker & Nginx]
         I --> J
+        J --> K[Run Container on HTTP]
+        K --> M[SSL Setup via Certbot]
+        M --> N[Restart Nginx with HTTPS]
     end
 
-    K --> L((Live Portfolio Website))
+    N --> L((Live Portfolio Website))
 
     style L fill:#f9f,stroke:#333,stroke-width:4px
-    style G fill:#FF9900,color:white
+    style T fill:#FF9900,color:white
 
-Ansible manages state, not guesses
-
-Certbot needs a live web server
-
-Ports are global, containers are not
-
-Restarting Docker means something went wrong earlier
