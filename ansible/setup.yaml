@@ -1,0 +1,30 @@
+---
+- name: Setup Docker and Deploy Portfolio
+  hosts: webserver
+  become: yes
+  tasks:
+    - name: Install Docker
+      dnf:
+        name: docker
+        state: present
+
+    - name: Start and Enable Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add ec2-user to docker group
+      user:
+        name: ec2-user
+        groups: docker
+        append: yes
+
+    - name: Pull Nginx image
+      shell: docker pull nginx:latest
+
+    - name: Run Nginx Container (Portfolio Placeholder)
+      shell: |
+        docker stop portfolio-site || true
+        docker rm portfolio-site || true
+        docker run -d -p 80:80 --name portfolio-site nginx

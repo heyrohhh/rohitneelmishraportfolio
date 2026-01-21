@@ -1,0 +1,21 @@
+# Security (Sabse zaroori)
+*.pem
+*.key
+terraform.tfstate
+terraform.tfstate.backup
+
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfvars
+
+# Node / React
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
