@@ -1,48 +1,20 @@
 export default function Projects() {
   const projects = [
     {
-      title: "CloudBook-Orchestrator: Full-Cycle DevOps",
-      desc: "End-to-end containerized application with automated CI/CD and secure AWS deployment.",
-      tools: ["GitHub Actions", "AWS EC2", "Nginx", "SSL/Certbot", "Docker", "MySQL"],
-      link: "https://github.com/heyrohhh/CloudBook-Orchestrator.git",
+      title: "Google Microservices Demo Migration (GCP → AWS)",
+      desc: "Migrated production-grade microservices architecture from GCP Kubernetes to AWS ECS Fargate with complete IaC and CI/CD automation.",
+      tools: ["AWS ECS Fargate", "Terraform", "GitHub Actions", "Docker", "ECR", "ALB", "Cloud Map", "CloudWatch"],
+      link: "https://github.com/heyrohhh/microservices-demo.git",
       details: [
-        "Built automated CI/CD pipelines in GitHub Actions for zero-downtime deployment.",
-        "Deployed on AWS EC2 using Nginx and secured with Let's Encrypt SSL.",
-        "Provisioned infrastructure with controlled security group access.",
-        "Managed persistent database storage using Docker volumes."
-      ]
-    },
-    {
-      title: "AWS Portfolio Deployment with CI/CD & SSL",
-      desc: "Production-grade React portfolio deployed on AWS using Docker, Ansible, Terraform, and GitHub Actions.",
-      tools: [
-        "AWS EC2",
-        "Terraform",
-        "Ansible",
-        "Docker",
-        "Nginx",
-        "Certbot",
-        "GitHub Actions"
-      ],
-      link: "https://github.com/heyrohhh/rohitneelmishraportfolio.git",
-      details: [
-        "Provisioned AWS EC2 and security groups using Terraform.",
-        "Built a multi-stage Docker image to serve a React application via Nginx.",
-        "Designed CI/CD pipeline with GitHub Actions to build and deploy images automatically.",
-        "Implemented two-phase HTTP → HTTPS SSL bootstrapping using Certbot webroot validation.",
-        "Separated build-time and runtime concerns by managing Nginx configuration via Ansible.",
-        "Resolved real-world deployment issues including Docker port conflicts and SSL sequencing failures."
-      ]
-    },
-    {
-      title: "KubeMastery-Labs",
-      desc: "Hands-on Kubernetes orchestration labs demonstrating workload management and service networking.",
-      tools: ["Kubernetes", "Docker", "YAML", "kubectl", "Docker Desktop"],
-      link: "https://github.com/heyrohhh/KubeMastery-Labs.git",
-      details: [
-        "Designed multi-pod deployments with self-healing behavior.",
-        "Used ConfigMaps and Secrets for environment-specific configuration.",
-        "Implemented NodePort and ClusterIP services for traffic routing."
+        "Migrated 12+ microservices from GCP Kubernetes to AWS ECS Fargate with zero server management.",
+        "Designed complete infrastructure using Terraform including VPC, ALB, ECS clusters, and Cloud Map for service discovery.",
+        "Built intelligent CI/CD pipeline with GitHub Actions using dorny/paths-filter to detect service-level changes and deploy only modified services.",
+        "Implemented Application Load Balancer with path-based routing and custom health checks for frontend service.",
+        "Configured AWS Cloud Map for internal service discovery and inter-service communication.",
+        "Solved Docker Hub rate-limit issues by migrating all images to AWS ECR.",
+        "Debugged and disabled GCP-specific Profiler causing runtime failures on AWS.",
+        "Used CloudWatch logs extensively for debugging task failures, image pull errors, and health check issues.",
+        "Practiced local Kubernetes deployment (Docker Desktop) to understand orchestration differences between ECS and K8s."
       ]
     }
   ];
