@@ -47,6 +47,6 @@ jobs:
         with:
           context: ./frontendRohit/
           push: true
-          tags: heyrohhh/portfolio:${{needs.set-image-version.outputs.version}}
+          tags: heyrohhh/portfolio:${{ needs.set-image-version.outputs.version }}
 
   
