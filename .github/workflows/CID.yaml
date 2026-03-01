@@ -17,7 +17,7 @@ jobs:
 
   build-and-push:
     runs-on: ubuntu-latest
-    needs: set-image-version        # ← Fix 1: added this
+    needs: set-image-version     
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
