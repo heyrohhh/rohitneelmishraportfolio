@@ -1,14 +1,22 @@
 export default function Skills() {
-  const categories = [
-    {
-      title: "DevOps & Cloud",
-      items: ["Git / GitHub", "GitHub Actions", "Docker / Compose", "Kubernetes", "AWS (EC2/VPC)", "Terraform"]
-    },
-    {
-      title: "Core IT & Operations",
-      items: ["Linux Administration", "Bash Scripting", "Networking Basics", "IT Operations Management"]
-    }
-  ];
+ const categories = [
+  {
+    title: "AWS & Cloud",
+    items: ["ECS Fargate", "ECR", "ALB (Public & Private)", "VPC & Subnets", "Cloud Map", "CloudWatch", "IAM", "Secrets Manager", "SSM Session Manager", "NAT Gateway"]
+  },
+  {
+    title: "IaC & CI/CD",
+    items: ["Terraform (Modular)", "GitHub Actions", "Trivy Security Scanning", "Docker", "Remote State", "Multi-Environment IaC"]
+  },
+  {
+    title: "Monitoring & Observability",
+    items: ["Prometheus", "Grafana", "Alertmanager", "Redis Exporter", "PromQL", "Telegram Webhooks"]
+  },
+  {
+    title: "Core IT & Operations",
+    items: ["Linux Administration", "Bash Scripting", "Networking (VPC/Routing/NAT)", "Git / GitHub", "IT Operations Management"]
+  }
+];
 
   return (
     <section className="mb-32">

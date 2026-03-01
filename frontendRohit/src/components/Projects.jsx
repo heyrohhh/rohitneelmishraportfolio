@@ -1,23 +1,22 @@
 export default function Projects() {
   const projects = [
-    {
-      title: "Google Microservices Demo Migration (GCP → AWS)",
-      desc: "Migrated production-grade microservices architecture from GCP Kubernetes to AWS ECS Fargate with complete IaC and CI/CD automation.",
-      tools: ["AWS ECS Fargate", "Terraform", "GitHub Actions", "Docker", "ECR", "ALB", "Cloud Map", "CloudWatch"],
-      link: "https://github.com/heyrohhh/microservices-demo.git",
-      details: [
-        "Migrated 12+ microservices from GCP Kubernetes to AWS ECS Fargate with zero server management.",
-        "Designed complete infrastructure using Terraform including VPC, ALB, ECS clusters, and Cloud Map for service discovery.",
-        "Built intelligent CI/CD pipeline with GitHub Actions using dorny/paths-filter to detect service-level changes and deploy only modified services.",
-        "Implemented Application Load Balancer with path-based routing and custom health checks for frontend service.",
-        "Configured AWS Cloud Map for internal service discovery and inter-service communication.",
-        "Solved Docker Hub rate-limit issues by migrating all images to AWS ECR.",
-        "Debugged and disabled GCP-specific Profiler causing runtime failures on AWS.",
-        "Used CloudWatch logs extensively for debugging task failures, image pull errors, and health check issues.",
-        "Practiced local Kubernetes deployment (Docker Desktop) to understand orchestration differences between ECS and K8s."
-      ]
-    }
-  ];
+  {
+    title: "Production-Grade Microservices Deployment on AWS",
+    desc: "Migrated Google's Online Boutique microservices demo from GCP Kubernetes to a fully custom AWS ECS Fargate architecture with end-to-end infrastructure automation.",
+    tools: ["AWS ECS Fargate", "ECR", "ALB", "Cloud Map", "Secrets Manager", "Terraform", "GitHub Actions", "Docker", "Trivy", "Prometheus", "Grafana", "Alertmanager", "Redis Exporter"],
+    link: "https://github.com/heyrohhh/microservices_demo",
+    details: [
+      "Designed and provisioned a secure VPC with public/private subnets across 2 AZs, NAT Gateway, and route tables — no public IPs on ECS tasks.",
+      "Deployed 18 ECS Fargate services (cart, checkout, payment, frontend, redis, monitoring stack, and more) all running concurrently with 1/1 tasks healthy.",
+      "Built modular Terraform infrastructure covering ECS cluster, ALB (public + private), ECR, Cloud Map, Secrets Manager, and IAM roles.",
+      "Implemented selective CI/CD pipeline in GitHub Actions: detects changed services, runs parallel matrix builds, Trivy scans for HIGH/CRITICAL vulnerabilities, then deploys — blocking pipeline if scan fails.",
+      "Configured AWS Cloud Map for DNS-based internal service discovery, enabling Prometheus to dynamically discover scrape targets without static IPs.",
+      "Integrated full observability stack: Prometheus scraping live metrics, 5 custom alert rules (FrontendDown, HighCPU, 5xxError, LatencyHigh, P99High), Alertmanager sending notifications to Telegram.",
+      "Implemented secure bastion access via AWS SSM Session Manager with port forwarding — no SSH keys, no bastion EC2.",
+      "Stored all sensitive credentials (Telegram token, Grafana admin password) in AWS Secrets Manager, injected at ECS task runtime — zero hardcoded secrets."
+    ]
+  }
+];
 
   return (
     <section className="mb-20">
