@@ -6,7 +6,7 @@ export default function Hero() {
       </h1>
 
       <p className="text-xl text-blue-500 mt-2 font-mono">
-        IT & Admin Support Executive → DevOps Engineer
+        IT System & Automation Executive → DevOps Engineer
       </p>
 
       <p className="mt-4 text-gray-400 max-w-2xl leading-relaxed">
