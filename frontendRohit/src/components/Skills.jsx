@@ -1,22 +1,30 @@
 export default function Skills() {
- const categories = [
-  {
-    title: "AWS & Cloud",
-    items: ["ECS Fargate", "ECR", "ALB (Public & Private)", "VPC & Subnets", "Cloud Map", "CloudWatch", "IAM", "Secrets Manager", "SSM Session Manager", "NAT Gateway"]
-  },
-  {
-    title: "IaC & CI/CD",
-    items: ["Terraform (Modular)", "GitHub Actions", "Trivy Security Scanning", "Docker", "Remote State", "Multi-Environment IaC"]
-  },
-  {
-    title: "Monitoring & Observability",
-    items: ["Prometheus", "Grafana", "Alertmanager", "Redis Exporter", "PromQL", "Telegram Webhooks"]
-  },
-  {
-    title: "Core IT & Operations",
-    items: ["Linux Administration", "Bash Scripting", "Networking (VPC/Routing/NAT)", "Git / GitHub", "IT Operations Management"]
-  }
-];
+  const categories = [
+    {
+      title: "AWS & Cloud",
+      items: ["ECS Fargate", "EC2 & Auto-Scaling (ASG)", "ECR", "ALB", "VPC & Subnets", "Cloud Map", "CloudWatch", "IAM", "Secrets Manager", "SSM Session Manager", "NAT Gateway", "Route 53", "S3", "DynamoDB"]
+    },
+    {
+      title: "Containers & Orchestration",
+      items: ["Docker", "Kubernetes (K8s)", "ECS (Task Definitions, Autoscaling)", "Helm (Chart Authoring)", "AKS (Azure Kubernetes Service)", "HPA", "Ingress", "ConfigMaps & Secrets"]
+    },
+    {
+      title: "IaC & CI/CD",
+      items: ["Terraform (Modular Architecture)", "Remote State & Multi-Env IaC", "GitHub Actions (Matrix Builds)", "Jenkins (Multibranch Pipelines)", "Trivy Security Scanning", "Docker Image Versioning"]
+    },
+    {
+      title: "Monitoring & Observability",
+      items: ["Prometheus", "Grafana", "Alertmanager", "Redis Exporter", "PromQL", "Telegram Webhooks", "CloudWatch Alarms", "Structured Logging"]
+    },
+    {
+      title: "Scripting & Development",
+      items: ["Bash", "Python", "Node.js", "React", "MySQL", "Webhook / API Integration"]
+    },
+    {
+      title: "Systems & Networking",
+      items: ["Linux Administration", "VPC Design (Subnets, Routing, NAT)", "VLAN Configuration", "DNS Troubleshooting", "Firewall Rules", "Git / GitHub", "HTTP Metrics Analysis"]
+    }
+  ];
 
   return (
     <section className="mb-32">

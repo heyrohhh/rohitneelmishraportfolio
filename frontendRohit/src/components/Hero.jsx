@@ -16,7 +16,7 @@ export default function Hero() {
       </p>
 
       <p className="mt-3 text-sm text-gray-500 font-mono">
-        Linux · Git · Docker · Kubernetes · AWS · Terraform · GitHub Actions
+        Linux · Git · Docker · Kubernetes · AWS · Terraform · GitHub Actions . Jenkins
       </p>
     </section>
   );
