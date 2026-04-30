@@ -1,25 +1,55 @@
+import useReveal from '../hooks/useReveal';
+import './Skills.css';
+
+const CATEGORIES = [
+  {
+    icon: '☁', title: 'AWS & Cloud',
+    items: ['ECS Fargate','EC2 + ASG','RDS','ECR','ALB','VPC','IAM','CloudWatch','Secrets Manager','SSM','S3','DynamoDB','SQS + DLQ','Lambda'],
+  },
+  {
+    icon: '⬡', title: 'Containers & Orchestration',
+    items: ['Docker','Kubernetes','ECS Task Defs','Helm','AKS','HPA','Ingress','ConfigMaps'],
+  },
+  {
+    icon: '⚙', title: 'IaC & CI/CD',
+    items: ['Terraform','Remote State','GitHub Actions','Jenkins','Trivy','Matrix Builds','Auto-Rollback'],
+  },
+  {
+    icon: '◉', title: 'Monitoring & Observability',
+    items: ['Prometheus','Grafana','Alertmanager','PromQL','Redis Exporter','Telegram Webhooks','CloudWatch Alarms'],
+  },
+  {
+    icon: '⌨', title: 'Queue & Async Systems',
+    items: ['Redis','BullMQ','AWS SQS','DLQ','Exponential Backoff','Concurrency Control'],
+  },
+  {
+    icon: '⊞', title: 'Systems & Dev',
+    items: ['Linux Admin','Bash','Python','Node.js','VLAN / DNS','Firewall Rules','Git'],
+  },
+];
+
 export default function Skills() {
-  const categories = [
-    {
-      title: "DevOps & Cloud",
-      items: ["Git / GitHub", "GitHub Actions", "Docker / Compose", "Kubernetes", "AWS (EC2/VPC)", "Terraform"]
-    },
-    {
-      title: "Core IT & Operations",
-      items: ["Linux Administration", "Bash Scripting", "Networking Basics", "IT Operations Management"]
-    }
-  ];
+  const headerRef = useReveal();
+  const gridRef   = useReveal();
 
   return (
-    <section className="mb-32">
-      <h2 className="text-sm uppercase tracking-[0.2em] text-gray-500 mb-8">02. Technical Stack</h2>
-      <div className="grid md:grid-cols-2 gap-12">
-        {categories.map((cat) => (
-          <div key={cat.title}>
-            <h3 className="text-blue-500 font-mono mb-4 underline decoration-blue-800 underline-offset-8">{cat.title}</h3>
-            <ul className="grid grid-cols-2 gap-2 text-sm text-gray-300">
-              {cat.items.map(item => <li key={item}>• {item}</li>)}
-            </ul>
+    <section id="stack">
+      <div className="section-header reveal" ref={headerRef}>
+        <span className="section-num">02</span>
+        <h2 className="section-title">Technical Stack</h2>
+        <div className="section-line" />
+      </div>
+      <div className="skills-grid reveal" ref={gridRef}>
+        {CATEGORIES.map(cat => (
+          <div key={cat.title} className="skill-group">
+            <div className="skill-group-title">
+              <span className="skill-icon">{cat.icon}</span> {cat.title}
+            </div>
+            <div className="skill-tags">
+              {cat.items.map(item => (
+                <span key={item} className="skill-tag">{item}</span>
+              ))}
+            </div>
           </div>
         ))}
       </div>

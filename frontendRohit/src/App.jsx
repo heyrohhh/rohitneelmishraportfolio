@@ -1,26 +1,43 @@
+import { useState, useEffect } from 'react';
+import Nav from './components/Nav';
+import StatusBar from './components/StatusBar';
 import Hero from './components/Hero';
+import Terminal from './components/Terminal';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import GithubStats from './components/GithubStats';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
+import { ThemeContext } from './context/ThemeContext';
+import './index.css';
 
-function App() {
+export default function App() {
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
+
   return (
-    <div className="bg-[#0a0a0a] text-white min-h-screen font-sans selection:bg-blue-500/30">
-      <main className="max-w-4xl mx-auto px-6 pt-20 pb-10">
-        <Hero />
-        <About />
-        <Skills />
-        <div className="space-y-20"> 
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className="app">
+        <div className="noise" />
+        <Nav />
+        <StatusBar />
+        <main>
+          <Hero />
+          <Terminal />
+          <About />
+          <Skills />
           <Projects />
           <Experience />
-        </div>
-        <Contact />
-      </main>
-    </div>
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeContext.Provider>
   );
 }
-
-export default App;

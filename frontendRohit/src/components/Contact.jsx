@@ -1,39 +1,35 @@
+import useReveal from '../hooks/useReveal';
+import './Contact.css';
+
+const LINKS = [
+  { href: 'mailto:rm8619700@gmail.com',                  label: '✉ rm8619700@gmail.com' },
+  { href: 'https://linkedin.com/in/rohitmishra-techops', label: 'in LinkedIn',             external: true },
+  { href: 'https://github.com/heyrohhh',                 label: '⌥ GitHub',               external: true },
+  { href: 'tel:+916283426683',                           label: '✆ +91 6283426683' },
+];
+
 export default function Contact() {
+  const ref = useReveal();
+
   return (
-    <section className="border-t border-gray-900 pt-24 pb-28">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
-
-        <p className="text-gray-500 font-mono text-sm mb-10">
-          Open to DevOps and Cloud Infrastructure roles.
-        </p>
-
-        <div className="flex flex-col sm:flex-row justify-center gap-6 font-mono text-sm text-gray-400">
+    <section id="contact" className="contact-section reveal" ref={ref}>
+      <div className="contact-glow" />
+      <div className="contact-eyebrow">05. Let's Connect</div>
+      <h2 className="contact-title">
+        Open to DevOps,<br />SRE & Cloud Roles
+      </h2>
+      <p className="contact-sub">Available for full-time opportunities · Gurugram / Remote</p>
+      <div className="contact-links">
+        {LINKS.map(l => (
           <a
-            href="mailto:rm8619700@gmail.com"
-            className="hover:text-blue-500 transition"
+            key={l.href}
+            href={l.href}
+            className="contact-link"
+            {...(l.external ? { target: '_blank', rel: 'noreferrer' } : {})}
           >
-            EMAIL
+            {l.label}
           </a>
-
-          <span className="hidden sm:block text-gray-700">|</span>
-
-          <a
-            href="https://linkedin.com/in/rohitmishra-techops"
-            className="hover:text-blue-500 transition"
-          >
-            LINKEDIN
-          </a>
-
-          <span className="hidden sm:block text-gray-700">|</span>
-
-          <a
-            href="https://github.com/heyrohhh"
-            className="hover:text-blue-500 transition"
-          >
-            GITHUB
-          </a>
-        </div>
+        ))}
       </div>
     </section>
   );

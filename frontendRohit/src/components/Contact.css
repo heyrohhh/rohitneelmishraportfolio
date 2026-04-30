@@ -1,0 +1,43 @@
+.contact-section {
+  text-align: center;
+  padding: 80px 60px 100px;
+  position: relative;
+}
+.contact-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(59,130,246,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.contact-eyebrow {
+  font-size: 10px; letter-spacing: 0.15em;
+  color: var(--accent); margin-bottom: 16px; text-transform: uppercase;
+}
+.contact-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px;
+}
+.contact-sub {
+  color: var(--text3); font-size: 12px; margin-bottom: 40px; letter-spacing: 0.1em;
+}
+.contact-links {
+  display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+}
+.contact-link {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  text-decoration: none;
+  padding: 12px 22px; border-radius: 4px;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  transition: all 0.25s;
+  display: flex; align-items: center; gap: 8px;
+}
+.contact-link:hover {
+  border-color: var(--accent); color: var(--accent);
+  background: var(--glow); transform: translateY(-2px);
+}
+
+@media (max-width: 700px) {
+  .contact-section { padding: 60px 24px 80px; }
+}

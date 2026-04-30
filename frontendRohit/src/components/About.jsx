@@ -1,39 +1,79 @@
-export default function About() {
+import { useMemo } from 'react';
+import useReveal from '../hooks/useReveal';
+import './About.css';
+
+const STATS = [
+  { key: 'Current Role',  val: 'DevOps Engineer @ Positive Gems' },
+  { key: 'Location',      val: 'Gurugram, Haryana' },
+  { key: 'Experience',    val: '~2 years (infra + DevOps)' },
+  { key: 'Education',     val: 'BCA — MDU (2021–2024)' },
+  { key: 'Cert Target',   val: 'AWS SAA — Q3 2026', highlight: true },
+];
+
+function UptimeBar() {
+  const blocks = useMemo(() => (
+    Array.from({ length: 90 }, (_, i) => {
+      const r = Math.random();
+      return r > 0.997 ? 'down' : r > 0.99 ? 'warn' : '';
+    })
+  ), []);
+
   return (
-    <section className="mb-24"> {/* Reduced bottom margin from 32 to 24 */}
-      <h2 className="text-sm uppercase tracking-[0.2em] text-gray-500 mb-6">
-        01. Professional Summary
-      </h2>
+    <div>
+      <div className="uptime-label">JOB QUEUE UPTIME — LAST 90 DAYS</div>
+      <div className="uptime-row">
+        {blocks.map((cls, i) => (
+          <div key={i} className={`uptime-block ${cls}`} title={cls || 'healthy'} />
+        ))}
+      </div>
+      <div className="uptime-footer">
+        <span>90 days ago</span><span>99.9% uptime</span><span>today</span>
+      </div>
+    </div>
+  );
+}
 
-      <div className="text-gray-300 space-y-4 max-w-3xl leading-relaxed">
-        <p>
-          I started my career in July 2024 as an IT & Admin Support Executive after completing college.
-          Currently, I work at <strong>PositiveGems Pvt. Ltd.</strong>, where I handle day-to-day IT and
-          administrative support, manage IT operations, and take responsibility for selecting and
-          implementing software based on business requirements.
-        </p>
+export default function About() {
+  const ref1 = useReveal();
 
-        <p>
-          Alongside support responsibilities, I independently manage small technical implementations
-          and ensure stable, cost-effective IT operations across the organization.
-        </p>
+  return (
+    <section id="about">
+      <div className="about-grid reveal" ref={ref1}>
+        {/* Left */}
+        <div>
+          <div className="section-header">
+            <span className="section-num">01</span>
+            <h2 className="section-title">About Me</h2>
+            <div className="section-line" />
+          </div>
+          <div className="about-text">
+            <p>I'm a DevOps Engineer who started in Linux server rooms and network closets — hands on patch panels, VLAN configs, and DNS troubleshooting. That foundation directly informs how I think about VPC design, service discovery, and platform reliability today.</p>
+            <p>At Positive Gems, I own the full stack: designed an async job pipeline (API → Redis → ECS → RDS) that processes ~1,500 jobs/day with p95 latency under 190ms, reduced job failures from 15% to under 2%, and provisioned all infra with Terraform eliminating configuration drift.</p>
+            <p>I build for reliability, not just deployment — fault-tolerant architecture, zero-downtime deploys, automated rollbacks, and observability that catches issues before users do.</p>
+            <div className="about-highlight">
+              <div className="about-highlight-title">CURRENT FOCUS</div>
+              Pursuing AWS Solutions Architect Associate (Q3 2026) · Migrating ECS platform to AKS with Helm & Jenkins multibranch pipelines · Open to DevOps / SRE / Cloud roles.
+            </div>
+          </div>
+        </div>
 
-        <p>
-          Through hands-on exposure to systems, infrastructure, and operational workflows, I identified
-          limitations in support-focused roles for my long-term growth. This led me to transition toward
-          DevOps engineering, where I am actively building skills in automation, containerization,
-          cloud infrastructure, CI/CD pipelines, and infrastructure as code.
-        </p>
-
-        {/* MICRO-SECTION: CURRENT FOCUS */}
-        <div className="pt-6 mt-6 border-t border-gray-900 flex items-center gap-3">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-          </span>
-          <p className="text-sm font-mono text-gray-400">
-            Currently focusing on Kubernetes workloads, CI/CD automation, and AWS infrastructure using Terraform.
-          </p>
+        {/* Right */}
+        <div>
+          <div className="terminal" style={{ marginTop: '56px' }}>
+            <div className="terminal-header">
+              <div className="term-dot" /><div className="term-dot" /><div className="term-dot" />
+              <span className="term-title">system.metrics</span>
+            </div>
+            <UptimeBar />
+            <div className="about-stats">
+              {STATS.map(s => (
+                <div className="about-stat" key={s.key}>
+                  <span className="stat-key">{s.key}</span>
+                  <span className="stat-val" style={s.highlight ? { color: 'var(--orange)' } : {}}>{s.val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
